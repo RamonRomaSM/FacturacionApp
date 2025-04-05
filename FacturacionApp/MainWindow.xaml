@@ -5,6 +5,219 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FacturacionApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid/>
+        Title="MainWindow" MinHeight="800" MinWidth="1400" Width="1400">
+
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition MaxHeight="150"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!--FACTURANTE + SETTINGS -->
+        <Grid Grid.Row="0" Background="#F5F5F5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Foreground="Black" FontSize="15" Text="Nombre del Facturante:" Margin="10,10,10,10" />
+                    <TextBox Name="nombreFacturanteTxt" Grid.Column="1" Foreground="Black" FontSize="15" Margin="0,10,0,10" Width="350" HorizontalAlignment="Left"/>
+
+                    <TextBlock Grid.Row="1" Foreground="Black" FontSize="15" Text="Domicilio del Facturante:" Margin="10,10,10,10" />
+                    <TextBox Grid.Row="1" Name="domicilioFacturanteTxt" Grid.Column="1" Foreground="Black" FontSize="15" Margin="0,10,0,10" Width="350" HorizontalAlignment="Left"/>
+
+                    <TextBlock Grid.Row="2" Foreground="Black" FontSize="15" Text="CIF del Facturante:" Margin="10,10,10,10" />
+                    <TextBox Grid.Row="2" Name="cifFacturanteTxt" Grid.Column="1" Foreground="Black" FontSize="15" Margin="0,10,0,10" Width="350" HorizontalAlignment="Left"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock Foreground="Black" FontSize="15" Text="Nombre del Facturante:" Margin="10,10,10,10" />
+                <TextBox Name="nombreFacturadoTxt" Grid.Column="1" Foreground="Black" FontSize="15" Margin="0,10,0,10" Width="350" HorizontalAlignment="Left"/>
+
+                <TextBlock Grid.Row="1" Foreground="Black" FontSize="15" Text="Domicilio del Facturante:" Margin="10,10,10,10" />
+                <TextBox Grid.Row="1" Name="domicilioFacturadoTxt" Grid.Column="1" Foreground="Black" FontSize="15" Margin="0,10,0,10" Width="350" HorizontalAlignment="Left"/>
+
+                <TextBlock Grid.Row="2" Foreground="Black" FontSize="15" Text="CIF del Facturante:" Margin="10,10,10,10" />
+                <TextBox Grid.Row="2" Name="cifFacturadoTxt" Grid.Column="1" Foreground="Black" FontSize="15" Margin="0,10,0,10" Width="350" HorizontalAlignment="Left"/>
+            </Grid>
+            <Grid Grid.Column="2" Margin="0,0,10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="1" Foreground="Black" FontSize="15" Text="Retencion (%):" Margin="10,10,10,10" />
+                <TextBox Grid.Row="1" Name="retencionTxt" Grid.Column="1" Foreground="Black" FontSize="15" Margin="0,10,0,10" Width="100" HorizontalAlignment="Left" Text="15" PreviewTextInput="NumericTextBox_PreviewTextInput"/>
+            </Grid>
+
+        </Grid>
+        <!--APP CONTENT-->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MinWidth="220" MaxWidth="220"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <!--Left Bar-->
+            <Grid Grid.Column="0" Background="#F5F5F5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition Height="70*"/>
+                </Grid.RowDefinitions>
+
+                <Button Background="#4CAF50" Grid.Row="1">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*"/>
+                            <ColumnDefinition Width="50*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0"/>
+                        <TextBlock Grid.Column="1" Text="Generacion" Foreground="#FFFFFF" FontSize="18" x:Name="ButtonText"/>
+                    </Grid>
+                    <!--Hover and click-->
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="ButtonBorder" Background="{TemplateBinding Background}" 
+                                Padding="10">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="ButtonBorder" Property="Background" Value="#6BAF92"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="ButtonBorder" Property="Background" Value="#388E3C"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <Border Background="#F5F5F5" MinHeight="2" 
+                        MaxHeight="2" Grid.Row="2"/>
+
+                <Grid Grid.Row="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                   
+                    <ListView Grid.Row="1"  Background="Transparent" 
+                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                                  x:Name="ListViewPlaylists"
+                                  ItemsSource="{Binding playlists}"
+                                  Margin="10,0,0,0" BorderThickness="0"
+                                 >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding name}" FontSize="20" Foreground="White"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.Resources>
+                            <Style TargetType="ScrollBar">
+                                <Setter Property="Width" Value="12"/>
+
+                                <Setter Property="Background" Value="Transparent"/>
+
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ScrollBar">
+                                            <Grid Width="12">
+                                                <Rectangle Fill="#1E1E1E" Width="12" RadiusX="6" RadiusY="6"/>
+                                                <Track Name="PART_Track" IsDirectionReversed="true">
+                                                    <Track.Thumb>
+                                                        <Thumb Background="#0078D7" Width="12" Height="auto"
+                                                            Opacity="0.8" Cursor="Hand">
+                                                            <Thumb.Template>
+                                                                <ControlTemplate TargetType="Thumb">
+                                                                    <Border Background="#0078D7" CornerRadius="6"/>
+                                                                </ControlTemplate>
+                                                            </Thumb.Template>
+                                                        </Thumb>
+                                                    </Track.Thumb>
+                                                </Track>
+                                            </Grid>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ListView.Resources>
+                    </ListView>
+
+                </Grid>
+
+            </Grid>
+            <!--Contents-->
+            <Grid Grid.Column="1" Name="Content" Background="#E0E0E0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height=".9*"/>
+                        <RowDefinition Height=".1*"/>
+                    </Grid.RowDefinitions>
+                    <ContentControl Name="CurrentScreen"/>
+                    <!--Boton generar-->
+                    <Button Grid.Row="1" Width="150" Margin="0,10,0,10" 
+                             Background="#4CAF50" Content="Generar"
+                             FontSize="20" Foreground="White"
+                            Click="generar">      
+                        <!--Hover and click-->
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border x:Name="ButtonBorder" Background="{TemplateBinding Background}" 
+                                            Padding="10" CornerRadius="2">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="ButtonBorder" Property="Background" Value="#6BAF92"/>
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter TargetName="ButtonBorder" Property="Background" Value="#388E3C"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+
+                    </Button>
+                </Grid>
+                
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+
 </Window>

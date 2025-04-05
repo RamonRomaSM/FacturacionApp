@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\win10\\Documents\\GitHub\\FacturacionApp\\FacturacionApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BAAEC79C-1B80-47E4-8C0B-26DA78C23A2B}|FacturacionApp.csproj|c:\\users\\win10\\documents\\github\\facturacionapp\\facturacionapp\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{BAAEC79C-1B80-47E4-8C0B-26DA78C23A2B}|FacturacionApp.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BAAEC79C-1B80-47E4-8C0B-26DA78C23A2B}|FacturacionApp.csproj|c:\\users\\win10\\documents\\github\\facturacionapp\\facturacionapp\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BAAEC79C-1B80-47E4-8C0B-26DA78C23A2B}|FacturacionApp.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAAEC79C-1B80-47E4-8C0B-26DA78C23A2B}|FacturacionApp.csproj|c:\\users\\win10\\documents\\github\\facturacionapp\\facturacionapp\\controllers\\facturacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAAEC79C-1B80-47E4-8C0B-26DA78C23A2B}|FacturacionApp.csproj|solutionrelative:controllers\\facturacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAAEC79C-1B80-47E4-8C0B-26DA78C23A2B}|FacturacionApp.csproj|c:\\users\\win10\\documents\\github\\facturacionapp\\facturacionapp\\model\\factura.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAAEC79C-1B80-47E4-8C0B-26DA78C23A2B}|FacturacionApp.csproj|solutionrelative:model\\factura.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAAEC79C-1B80-47E4-8C0B-26DA78C23A2B}|FacturacionApp.csproj|c:\\users\\win10\\documents\\github\\facturacionapp\\facturacionapp\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{BAAEC79C-1B80-47E4-8C0B-26DA78C23A2B}|FacturacionApp.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,36 +26,65 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\win10\\Documents\\GitHub\\FacturacionApp\\FacturacionApp\\MainWindow.xaml",
               "RelativeDocumentMoniker": "MainWindow.xaml",
               "ToolTip": "C:\\Users\\win10\\Documents\\GitHub\\FacturacionApp\\FacturacionApp\\MainWindow.xaml",
               "RelativeToolTip": "MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-13T11:29:07.131Z",
+              "WhenOpened": "2025-04-04T15:17:32.113Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\win10\\Documents\\GitHub\\FacturacionApp\\FacturacionApp\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "MainWindow.xaml.cs",
               "ToolTip": "C:\\Users\\win10\\Documents\\GitHub\\FacturacionApp\\FacturacionApp\\MainWindow.xaml.cs",
               "RelativeToolTip": "MainWindow.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADoAAAAAAAAAAAA7wFIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-13T11:29:01.434Z",
+              "WhenOpened": "2025-04-04T13:47:00.379Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FacturaController.cs",
+              "DocumentMoniker": "C:\\Users\\win10\\Documents\\GitHub\\FacturacionApp\\FacturacionApp\\Controllers\\FacturaController.cs",
+              "RelativeDocumentMoniker": "Controllers\\FacturaController.cs",
+              "ToolTip": "C:\\Users\\win10\\Documents\\GitHub\\FacturacionApp\\FacturacionApp\\Controllers\\FacturaController.cs",
+              "RelativeToolTip": "Controllers\\FacturaController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-05T20:46:23.512Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Factura.cs",
+              "DocumentMoniker": "C:\\Users\\win10\\Documents\\GitHub\\FacturacionApp\\FacturacionApp\\Model\\Factura.cs",
+              "RelativeDocumentMoniker": "Model\\Factura.cs",
+              "ToolTip": "C:\\Users\\win10\\Documents\\GitHub\\FacturacionApp\\FacturacionApp\\Model\\Factura.cs",
+              "RelativeToolTip": "Model\\Factura.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-05T21:30:07.734Z",
+              "EditorCaption": ""
             }
           ]
         }
