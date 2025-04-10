@@ -39,11 +39,13 @@ namespace FacturacionApp.Model
             
             this.retencion = retencion;
             this.lineas = lineas;
-
-            //TODO: calcular
-            this.totalBruto = totalBruto;
-            this.totalNeto = totalNeto;
-            this.totalRetencion = totalRetencion;
+        
+            foreach(LineaFactura act in lineas)
+            {
+                this.totalBruto += act.importeBruto;
+                this.totalNeto = act.importeNeto;
+            }
+            this.totalRetencion=(retencion/100)*totalBruto;
         }
     }
 }

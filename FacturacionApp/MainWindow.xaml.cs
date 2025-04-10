@@ -83,7 +83,7 @@ public partial class MainWindow : Window
             }
         }
         
-        Factura factura = new Factura(num,nombreFacturanteTxt.Text,cifFacturanteTxt.Text,domicilioFacturanteTxt.Text,nombreFacturadoTxt.Text,cifFacturadoTxt.Text,domicilioFacturadoTxt.Text,retencionTxt.Text,lineas); 
+        Factura factura = new Factura(num,nombreFacturanteTxt.Text,cifFacturanteTxt.Text,domicilioFacturanteTxt.Text,nombreFacturadoTxt.Text,cifFacturadoTxt.Text,domicilioFacturadoTxt.Text,Double.Parse(retencionTxt.Text),lineas); 
         MessageBox.Show(num);
         return facturaController.generarPdf(factura);
     }
