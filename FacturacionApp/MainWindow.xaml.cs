@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace FacturacionApp;
 
@@ -28,11 +29,44 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-       
+        InitializePlaceHolders();
         CurrentScreen.Content = new GenerarControl(lineas);
 
     }
+    private void InitializePlaceHolders()
+    {
+        Dictionary<string, string>  Propiedades = new Dictionary<string, string>();
 
+        if (!File.Exists("facturante.properties"))
+        {
+            // Crear archivo por defecto si no existe
+            File.WriteAllLines("facturante.properties", new[]
+            {
+                "Nombre=",
+                "Direccion=",
+                "CIF="
+            });
+        }
+
+        // Leer el archivo línea por línea
+        foreach (var linea in File.ReadAllLines("facturante.properties"))
+        {
+            if (string.IsNullOrWhiteSpace(linea) || linea.TrimStart().StartsWith("#"))
+                continue;
+
+            var partes = linea.Split('=', 2);
+            if (partes.Length == 2)
+            {
+                var clave = partes[0].Trim();
+                var valor = partes[1].Trim();
+                Propiedades[clave] = valor;
+            }
+        }
+        nombreFacturanteTxt.Text = Propiedades.GetValueOrDefault("Nombre","");
+        domicilioFacturanteTxt.Text = Propiedades.GetValueOrDefault("Direccion", "");
+        cifFacturanteTxt.Text = Propiedades.GetValueOrDefault("CIF", "");
+
+    }
     private void generar(object sender, RoutedEventArgs e)
     {
         if (validaciones())
@@ -63,19 +97,28 @@ public partial class MainWindow : Window
     }
     private bool generaPdf()
     {
-        String num=compruebaFicheroNumFactura();
+        string num=compruebaFicheroNumFactura();
         Factura factura = new Factura(num,nombreFacturanteTxt.Text,cifFacturanteTxt.Text,domicilioFacturanteTxt.Text,nombreFacturadoTxt.Text,cifFacturadoTxt.Text,domicilioFacturadoTxt.Text,Double.Parse(retencionTxt.Text),lineas); 
         bool b = facturaController.generarPdf(factura,num+".pdf");
         if (b)
         {    
             lineas = new ObservableCollection<LineaFactura>();
             CurrentScreen.Content = new GenerarControl(lineas);
+            //Guardamos placeholders facturante para el futuro
+
+            File.WriteAllLines("facturante.properties", new[]
+            {
+            "Nombre="+nombreFacturanteTxt.Text,
+            "Direccion="+domicilioFacturanteTxt.Text,
+            "CIF="+cifFacturanteTxt.Text
+            });
+            
         }
         return b;
     }
     private string compruebaFicheroNumFactura()
     {
-        String num;
+        string num;
         string fecha = DateTime.Now.ToString("yyyyMMdd");
         if (!File.Exists("numFact.txt"))
         {
