@@ -18,7 +18,8 @@
                           PreviewMouseWheel="ListView_PreviewMouseWheel">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <Border Background="Transparent" BorderThickness="3" BorderBrush="#BDBDBD" CornerRadius="3">
+                            <Grid Margin="0,20,0,0">
+                                <Border Background="Transparent" BorderThickness="3" BorderBrush="#BDBDBD" CornerRadius="3">
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition/>
@@ -72,6 +73,48 @@
                                     </Grid>
                                 </Grid>
                             </Border>
+                                <Button Width="30"
+                                        Height="30"
+                                        Cursor="Hand"
+                                        Margin="0,-15,25,0"
+                                        FontWeight="Bold"
+                                        Content="🗑" VerticalAlignment="Top" HorizontalAlignment="Right" Click="removeLinea" >
+                                    <Button.Style>
+                                        <Style TargetType="Button">
+                                            <Setter Property="Foreground" Value="White"/>
+                                            <Setter Property="Background" Value="Red"/>
+                                            <Setter Property="BorderThickness" Value="0"/>
+                                            <Setter Property="Padding" Value="10,5"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="Button">
+                                                        <Border x:Name="border"
+                                                        Background="{TemplateBinding Background}"
+                                                        CornerRadius="8"
+                                                        SnapsToDevicePixels="True">
+                                                            <ContentPresenter HorizontalAlignment="Center"
+                                                            VerticalAlignment="Center"
+                                                            RecognizesAccessKey="True"/>
+                                                        </Border>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter TargetName="border" Property="Background" Value="#660000"/>
+                                                            </Trigger>
+                                                            <Trigger Property="IsPressed" Value="True">
+                                                                <Setter TargetName="border" Property="Background" Value="#4D0000"/>
+                                                            </Trigger>
+                                                            <Trigger Property="IsEnabled" Value="False">
+                                                                <Setter TargetName="border" Property="Background" Value="Gray"/>
+                                                                <Setter Property="Foreground" Value="#DDDDDD"/>
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                            </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                     <ListView.ItemContainerStyle>
@@ -101,58 +144,61 @@
                         </Style>
                     </ListView.ItemContainerStyle>
                 </ListView>
-                <Border Background="Transparent" BorderThickness="3" 
-                        BorderBrush="#BDBDBD" Margin="10,0,10,0" 
-                        CornerRadius="3">
-                    <Grid Height="120" Background="#E0E0E0">
-                        <!--Formulario para agregar lineas-->
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height=".25*"/>
-                            <RowDefinition Height=".75*"/>
-                        </Grid.RowDefinitions>
+                <Grid>
+                    <Border Background="Transparent" BorderThickness="3" 
+                    BorderBrush="#BDBDBD" Margin="10,0,10,0" 
+                    CornerRadius="3">   
+                        <Grid Height="120" Background="#E0E0E0">
+                            <!--Formulario para agregar lineas-->
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height=".25*"/>
+                                <RowDefinition Height=".75*"/>
+                            </Grid.RowDefinitions>
 
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Grid Grid.Column="0" Margin="10,5,10,0">
+                            <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Foreground="Black" FontSize="15" Text="Cliente:"/>
-                                <TextBox Name="clienteTxt" Grid.Column="1" Foreground="Black" FontSize="15"/>
-                            </Grid>
-                            <Grid Grid.Column="1" Margin="10,5,10,0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Foreground="Black" FontSize="15" Text="Importe Bruto(€):"/>
-                                <TextBox Name="importeTxt" Grid.Column="1" Foreground="Black" FontSize="15" PreviewTextInput="NumericTextBox_PreviewTextInput"/>
+                                <Grid Grid.Column="0" Margin="10,5,10,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Foreground="Black" FontSize="15" Text="Cliente:"/>
+                                    <TextBox Name="clienteTxt" Grid.Column="1" Foreground="Black" FontSize="15"/>
+                                </Grid>
+                                <Grid Grid.Column="1" Margin="10,5,10,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Foreground="Black" FontSize="15" Text="Importe Bruto(€):"/>
+                                    <TextBox Name="importeTxt" Grid.Column="1" Foreground="Black" FontSize="15" PreviewTextInput="NumericTextBox_PreviewTextInput"/>
+                                </Grid>
+                                <Grid Grid.Column="2" Margin="10,5,10,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Foreground="Black" FontSize="15" Text="IVA (%):"/>
+                                    <TextBox Name="ivaTxt" Grid.Column="1" Foreground="Black" FontSize="15" PreviewTextInput="NumericTextBox_PreviewTextInput" Text="21"/>
+                                </Grid>
                             </Grid>
-                            <Grid Grid.Column="2" Margin="10,5,10,0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Foreground="Black" FontSize="15" Text="IVA (%):"/>
-                                <TextBox Name="ivaTxt" Grid.Column="1" Foreground="Black" FontSize="15" PreviewTextInput="NumericTextBox_PreviewTextInput" Text="21"/>
-                            </Grid>
+                            <StackPanel Grid.Row="1" Margin="10,5,10,5" Orientation="Horizontal">
+
+                                <TextBlock Grid.Row="1" Foreground="Black" FontSize="15" Text="Descripción:" Margin="0,0,20,0"/>
+                                <TextBox Name="descTxt" Grid.Row="1" Grid.Column="1" Foreground="Black" 
+                     FontSize="15" AcceptsReturn="True" TextWrapping="Wrap" 
+                     VerticalScrollBarVisibility="Auto" Width="400"/>
+
+                            </StackPanel>
+
                         </Grid>
-                        <StackPanel Grid.Row="1" Margin="10,5,10,5" Orientation="Horizontal">
-
-                            <TextBlock Grid.Row="1" Foreground="Black" FontSize="15" Text="Descripción:" Margin="0,0,20,0"/>
-                            <TextBox Name="descTxt" Grid.Row="1" Grid.Column="1" Foreground="Black" 
-                                     FontSize="15" AcceptsReturn="True" TextWrapping="Wrap" 
-                                     VerticalScrollBarVisibility="Auto" Width="400"/>
-                            
-                        </StackPanel>
-
-                    </Grid>
-                </Border>
+                    </Border>
+                    
+                </Grid>
                 <Button Content="Añadir" VerticalAlignment="top"
                     Width="100"
                     Height="40"

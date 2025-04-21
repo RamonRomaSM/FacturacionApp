@@ -35,57 +35,70 @@ public partial class MainWindow : Window
 
     private void generar(object sender, RoutedEventArgs e)
     {
-
         if (validaciones())
         {
             generaPdf();
-        }
-        else
-        {
-            MessageBox.Show("No hay lineas de facturacion");
         }
     }
     private bool validaciones()
     {
         if (lineas.Count > 0)
         {
-            return true;
+            if (nombreFacturanteTxt.Text != "" && cifFacturanteTxt.Text != "" && domicilioFacturanteTxt.Text != ""
+            && nombreFacturadoTxt.Text != "" && cifFacturadoTxt.Text != "" && domicilioFacturadoTxt.Text != "")
+            {             
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Faltan datos de facturante y/o facturado");
+                return false; 
+            }
         }
         else
         {
+            MessageBox.Show("No hay lineas de factiración");
             return false;
-            
         }
     }
     private bool generaPdf()
     {
+        String num=compruebaFicheroNumFactura();
+        Factura factura = new Factura(num,nombreFacturanteTxt.Text,cifFacturanteTxt.Text,domicilioFacturanteTxt.Text,nombreFacturadoTxt.Text,cifFacturadoTxt.Text,domicilioFacturadoTxt.Text,Double.Parse(retencionTxt.Text),lineas); 
+        bool b = facturaController.generarPdf(factura,num+".pdf");
+        if (b)
+        {    
+            lineas = new ObservableCollection<LineaFactura>();
+            CurrentScreen.Content = new GenerarControl(lineas);
+        }
+        return b;
+    }
+    private string compruebaFicheroNumFactura()
+    {
         String num;
-        string fecha = DateTime.Now.ToString("ddMMyyyy");
+        string fecha = DateTime.Now.ToString("yyyyMMdd");
         if (!File.Exists("numFact.txt"))
         {
-            File.AppendAllText("numFact.txt", "1"+fecha);
-            num =("1" + fecha);
+            File.AppendAllText("numFact.txt", "1-" + fecha);
+            num = ("1-" + fecha);
         }
         else
         {
             num = Encoding.UTF8.GetString(File.ReadAllBytes("numFact.txt"));
-            if (!num.Substring(1).Equals(fecha))
+            if (!num.Substring(2).Equals(fecha))
             {
-                File.AppendAllText("numFact.txt", "1" + fecha);
+                File.AppendAllText("numFact.txt", "1-" + fecha);
                 num = Encoding.UTF8.GetString(File.ReadAllBytes("numFact.txt"));
             }
             else
             {
-                int numFact = int.Parse(num[0]+"");
+                int numFact = int.Parse(num[0] + "");
                 File.WriteAllText("numFact.txt", string.Empty);
-                File.WriteAllText("numFact.txt", (numFact+1) + fecha);
+                File.WriteAllText("numFact.txt", (numFact+1) + "-" + fecha);
                 num = Encoding.UTF8.GetString(File.ReadAllBytes("numFact.txt"));
             }
         }
-        
-        Factura factura = new Factura(num,nombreFacturanteTxt.Text,cifFacturanteTxt.Text,domicilioFacturanteTxt.Text,nombreFacturadoTxt.Text,cifFacturadoTxt.Text,domicilioFacturadoTxt.Text,Double.Parse(retencionTxt.Text),lineas); 
-        MessageBox.Show(num);
-        return facturaController.generarPdf(factura);
+        return num;
     }
     private void NumericTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
     {

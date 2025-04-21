@@ -57,14 +57,14 @@
                     <RowDefinition/>
                     <RowDefinition Height="50"/>
                 </Grid.RowDefinitions>
-                
-                <TextBlock Foreground="Black" FontSize="15" Text="Nombre del Facturante:" Margin="10,10,10,10" />
+
+                <TextBlock Foreground="Black" FontSize="15" Text="Nombre del Facturado:" Margin="10,10,10,10" />
                 <TextBox Name="nombreFacturadoTxt" Grid.Column="1" Foreground="Black" FontSize="15" Margin="0,10,0,10" Width="350" HorizontalAlignment="Left"/>
 
-                <TextBlock Grid.Row="1" Foreground="Black" FontSize="15" Text="Domicilio del Facturante:" Margin="10,10,10,10" />
+                <TextBlock Grid.Row="1" Foreground="Black" FontSize="15" Text="Domicilio del Facturado:" Margin="10,10,10,10" />
                 <TextBox Grid.Row="1" Name="domicilioFacturadoTxt" Grid.Column="1" Foreground="Black" FontSize="15" Margin="0,10,0,10" Width="350" HorizontalAlignment="Left"/>
 
-                <TextBlock Grid.Row="2" Foreground="Black" FontSize="15" Text="CIF del Facturante:" Margin="10,10,10,10" />
+                <TextBlock Grid.Row="2" Foreground="Black" FontSize="15" Text="CIF del Facturado:" Margin="10,10,10,10" />
                 <TextBox Grid.Row="2" Name="cifFacturadoTxt" Grid.Column="1" Foreground="Black" FontSize="15" Margin="0,10,0,10" Width="350" HorizontalAlignment="Left"/>
             </Grid>
             <Grid Grid.Column="2" Margin="0,0,10,0">

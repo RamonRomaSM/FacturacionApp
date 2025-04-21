@@ -9,21 +9,21 @@ namespace FacturacionApp.Model
 {
     public class Factura
     {
-        string numeroFactura { get; set; }
+        public string numeroFactura { get; set; }
 
-        string nombreFacturante { get; set; }
-        string cifFacturante { get; set; }
-        string domicilioFacturante { get; set; }
+        public string nombreFacturante { get; set; }
+        public string cifFacturante { get; set; }
+        public string domicilioFacturante { get; set; }
 
-        string nombreFacturado { get; set; }
-        string cifFacturado { get; set; }
-        string domicilioFacturado { get; set; }
+        public string nombreFacturado { get; set; }
+        public string cifFacturado { get; set; }
+        public string domicilioFacturado { get; set; }
 
-        double totalBruto { get; set; }
-        double totalNeto { get; set; }
-        double retencion { get; set; }
-        double totalRetencion { get; set; }
-        ObservableCollection<LineaFactura> lineas { get; set; }
+        public double totalBruto { get; set; }
+        public double totalNeto { get; set; }
+        public double retencion { get; set; }
+        public double totalRetencion { get; set; }
+        public ObservableCollection<LineaFactura> lineas { get; set; }
 
         public Factura(string numeroFactura, string nombreFacturante, string cifFacturante, string domicilioFacturante, string nombreFacturado, string cifFacturado, string domicilioFacturado, double retencion, ObservableCollection<LineaFactura> lineas)
         {

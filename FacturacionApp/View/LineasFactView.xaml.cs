@@ -24,7 +24,7 @@ namespace FacturacionApp.View
     public partial class GenerarControl : UserControl
     {
         ObservableCollection<LineaFactura> lineas;
-        
+        int idLinea = 0;
         public GenerarControl(ObservableCollection<LineaFactura> lineas)
         {
             this.lineas = lineas;
@@ -70,17 +70,23 @@ namespace FacturacionApp.View
         {          
             if(clienteTxt.Text != "" && descTxt.Text != "" && importeTxt.Text != "" && ivaTxt.Text != "")
             {
-                lineas.Add(new LineaFactura(descTxt.Text, Double.Parse(importeTxt.Text), Double.Parse(ivaTxt.Text), clienteTxt.Text));
+                lineas.Add(new LineaFactura(idLinea, descTxt.Text, Double.Parse(importeTxt.Text), Double.Parse(ivaTxt.Text), clienteTxt.Text));
                 clienteTxt.Text = "";
                 descTxt.Text = "";
                 importeTxt.Text = "";
-                ivaTxt.Text = "";
+                idLinea++;
             }
             else
             {
                 MessageBox.Show("Debes rellenar todos los campos");
             }
         }
-       
+
+        private void removeLinea(object sender, RoutedEventArgs e)
+        {
+            Button b = (Button)sender;
+            LineaFactura l = (LineaFactura)b.DataContext;
+            lineas.Remove(l);
+        }
     }
 }
