@@ -55,12 +55,13 @@ namespace FacturacionApp.Controllers
                 // Datos del emisor de la factura
                 row.RelativeItem().Column(column =>
                 {
+                    /*
                     column
                         .Item().Text("FACTURA")
                         .FontSize(20)
                         .Bold()
                         .FontColor(Colors.Blue.Medium);
-
+                    */
                     column.Item().Text("EMISOR:").Bold().FontSize(12);
 
                     column.Item().Text(Factura.nombreFacturante)
@@ -121,7 +122,7 @@ namespace FacturacionApp.Controllers
                     foreach (var linea in Factura.lineas)
                     {
                         table.Cell().BorderBottom(1).BorderColor(Colors.Grey.Lighten2).Padding(5).Text(linea.concepto);
-                        table.Cell().BorderBottom(1).BorderColor(Colors.Grey.Lighten2).Padding(5).Text($"{linea.importeNeto:N2} €").AlignRight();
+                        table.Cell().BorderBottom(1).BorderColor(Colors.Grey.Lighten2).Padding(5).Text($"{linea.importeBruto:N2} €").AlignRight();
                     }
                 });
 
@@ -149,10 +150,18 @@ namespace FacturacionApp.Controllers
                     table.Cell().Padding(5).Text("IVA (21%):").Bold().AlignRight();
                     table.Cell().Padding(5).Text($"{iva:N2} €").AlignRight();
 
+                    if (Factura.retencion > 0)
+                    {
+                        total = total - Factura.totalRetencion;
+                        table.Cell().Padding(5).Text($"Retención ({Factura.retencion}%):").Bold().AlignRight();
+                        table.Cell().Padding(5).Text($"-{Factura.totalRetencion:N2} €").AlignRight();
+                    }
+
                     table.Cell().BorderTop(1).Padding(5).Text("TOTAL:").Bold().FontSize(12).AlignRight();
                     table.Cell().BorderTop(1).Padding(5).Text($"{total:N2} €").Bold().FontSize(12).AlignRight();
-                    table.Cell().Padding(5).Text($"Retención ({Factura.retencion}%):").Bold().AlignRight();
-                    table.Cell().Padding(5).Text($"-{Factura.totalRetencion:N2} €").AlignRight();
+
+                   
+                   
                 });
             });
         }

@@ -98,7 +98,8 @@ public partial class MainWindow : Window
     private bool generaPdf()
     {
         string num=compruebaFicheroNumFactura();
-        Factura factura = new Factura(num,nombreFacturanteTxt.Text,cifFacturanteTxt.Text,domicilioFacturanteTxt.Text,nombreFacturadoTxt.Text,cifFacturadoTxt.Text,domicilioFacturadoTxt.Text,Double.Parse(retencionTxt.Text),lineas); 
+        double retencion = (retencionTxt.Text=="") ? 0 : Double.Parse(retencionTxt.Text);
+        Factura factura = new Factura(num,nombreFacturanteTxt.Text,cifFacturanteTxt.Text,domicilioFacturanteTxt.Text,nombreFacturadoTxt.Text,cifFacturadoTxt.Text,domicilioFacturadoTxt.Text,retencion,lineas); 
         bool b = facturaController.generarPdf(factura,num+".pdf");
         if (b)
         {    
@@ -130,11 +131,14 @@ public partial class MainWindow : Window
             num = Encoding.UTF8.GetString(File.ReadAllBytes("numFact.txt"));
             if (!num.Substring(2).Equals(fecha))
             {
+                MessageBox.Show("1");
+                File.WriteAllText("numFact.txt", string.Empty);
                 File.AppendAllText("numFact.txt", "1-" + fecha);
                 num = Encoding.UTF8.GetString(File.ReadAllBytes("numFact.txt"));
             }
             else
             {
+                MessageBox.Show("2");
                 int numFact = int.Parse(num[0] + "");
                 File.WriteAllText("numFact.txt", string.Empty);
                 File.WriteAllText("numFact.txt", (numFact+1) + "-" + fecha);
