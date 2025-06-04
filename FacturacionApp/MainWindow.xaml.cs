@@ -131,14 +131,14 @@ public partial class MainWindow : Window
             num = Encoding.UTF8.GetString(File.ReadAllBytes("numFact.txt"));
             if (!num.Substring(2).Equals(fecha))
             {
-                MessageBox.Show("1");
+               
                 File.WriteAllText("numFact.txt", string.Empty);
                 File.AppendAllText("numFact.txt", "1-" + fecha);
                 num = Encoding.UTF8.GetString(File.ReadAllBytes("numFact.txt"));
             }
             else
             {
-                MessageBox.Show("2");
+               
                 int numFact = int.Parse(num[0] + "");
                 File.WriteAllText("numFact.txt", string.Empty);
                 File.WriteAllText("numFact.txt", (numFact+1) + "-" + fecha);
